@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<framework xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" alias="platform" enabled="true" invoke="/Users/oripekelman/Sites/platformsh-cli-upstream/platform" name="Platform.sh CLI" version="1" xsi:noNamespaceSchemaLocation="true">
+  <command>
+    <name>docs</name>
+    <params>search</params>
+    <help>Open the Platform.sh online documentation</help>
+  </command>
+  <command>
+    <name>help</name>
+    <params>command_name</params>
+    <help>Displays help for a command</help>
+  </command>
+  <command>
+    <name>list</name>
+    <params>namespace</params>
+    <help>Lists commands</help>
+  </command>
+  <command>
+    <name>login</name>
+    <help>Log in to Platform.sh</help>
+  </command>
+  <command>
+    <name>logout</name>
+    <help>Log out of Platform.sh</help>
+  </command>
+  <command>
+    <name>web</name>
+    <help>Open the Platform.sh Web UI</help>
+  </command>
+  <command>
+    <name>domain:add</name>
+    <params>name</params>
+    <help>Add a new domain to the project</help>
+  </command>
+  <command>
+    <name>domain:delete</name>
+    <params>name</params>
+    <help>Delete a domain from the project</help>
+  </command>
+  <command>
+    <name>domain:list</name>
+    <help>Get a list of all domains</help>
+  </command>
+  <command>
+    <name>environment:activate</name>
+    <params>environment</params>
+    <help>Activate an environment</help>
+  </command>
+  <command>
+    <name>environment:backup</name>
+    <params>environment</params>
+    <help>Make a backup of an environment</help>
+  </command>
+  <command>
+    <name>environment:branch</name>
+    <params>name</params>
+    <params>parent</params>
+    <help>Branch an environment</help>
+  </command>
+  <command>
+    <name>environment:checkout</name>
+    <params>id</params>
+    <help>Check out an environment</help>
+  </command>
+  <command>
+    <name>environment:deactivate</name>
+    <params>environment</params>
+    <help>Deactivate an environment</help>
+  </command>
+  <command>
+    <name>environment:delete</name>
+    <params>environment</params>
+    <help>Delete an environment</help>
+  </command>
+  <command>
+    <name>environment:drush</name>
+    <params>cmd</params>
+    <help>Run a drush command on the remote environment</help>
+  </command>
+  <command>
+    <name>environment:http-access</name>
+    <help>Update HTTP access settings for an environment</help>
+  </command>
+  <command>
+    <name>environment:list</name>
+    <help>Get a list of all environments</help>
+  </command>
+  <command>
+    <name>environment:merge</name>
+    <params>environment</params>
+    <help>Merge an environment</help>
+  </command>
+  <command>
+    <name>environment:relationships</name>
+    <params>environment</params>
+    <help>List an environment's relationships</help>
+  </command>
+  <command>
+    <name>environment:ssh</name>
+    <params>cmd</params>
+    <help>SSH to the current environment</help>
+  </command>
+  <command>
+    <name>environment:synchronize</name>
+    <params>synchronize</params>
+    <help>Synchronize an environment</help>
+  </command>
+  <command>
+    <name>environment:url</name>
+    <params>path</params>
+    <help>Get the public URL of an environment</help>
+  </command>
+  <command>
+    <name>integration:add</name>
+    <help>Add an integration to the project</help>
+  </command>
+  <command>
+    <name>integration:delete</name>
+    <params>id</params>
+    <help>Delete an integration from a project</help>
+  </command>
+  <command>
+    <name>integration:get</name>
+    <params>id</params>
+    <help>View project integration(s)</help>
+  </command>
+  <command>
+    <name>integration:update</name>
+    <params>id</params>
+    <help>Update an integration</help>
+  </command>
+  <command>
+    <name>project:build</name>
+    <help>Build the current project locally</help>
+  </command>
+  <command>
+    <name>project:clean</name>
+    <help>Remove old project builds</help>
+  </command>
+  <command>
+    <name>project:drush-aliases</name>
+    <help>Find the project's Drush aliases</help>
+  </command>
+  <command>
+    <name>project:get</name>
+    <params>id</params>
+    <params>directory-name</params>
+    <help>Clone and build a project locally</help>
+  </command>
+  <command>
+    <name>project:init</name>
+    <params>directory</params>
+    <help>Initialize from a plain Git repository</help>
+  </command>
+  <command>
+    <name>project:list</name>
+    <help>Get a list of all active projects</help>
+  </command>
+  <command>
+    <name>ssh-key:add</name>
+    <params>path</params>
+    <help>Add a new SSH key</help>
+  </command>
+  <command>
+    <name>ssh-key:delete</name>
+    <params>id</params>
+    <help>Delete an SSH key</help>
+  </command>
+  <command>
+    <name>ssh-key:list</name>
+    <help>Get a list of all added SSH keys</help>
+  </command>
+  <command>
+    <name>variable:delete</name>
+    <params>name</params>
+    <help>Delete a variable from an environment</help>
+  </command>
+  <command>
+    <name>variable:get</name>
+    <params>name</params>
+    <help>Get a variable for an environment</help>
+  </command>
+  <command>
+    <name>variable:set</name>
+    <params>name</params>
+    <params>value</params>
+    <help>Set a variable for an environment</help>
+  </command>
+</framework>

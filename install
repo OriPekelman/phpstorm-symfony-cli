@@ -1,0 +1,30 @@
+#!/bin/bash
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+if [ -z "$1" ]
+then
+  echo "USAGE: run path_to_this/install {cli-tool} in your PHPStorm project directory
+It will generate for any symfony-cli based tool command line completions for 
+PHPStorm for example './install platform'
+
+By default this creates a configuration for the awseome CLI for the awesome http://platform.sh PaaS which you should totally check out (you can install the CLI by running: composer global require 'platformsh/cli:1.*' ) "
+  CLI_TOOL=platform
+else
+  CLI_TOOL=$1
+fi
+
+ALIAS=$CLI_TOOL
+COMMAND=$(which $CLI_TOOL) || echo "$CLI_TOOL not found, maybe you should check your path"
+TMP_IN=$(mktemp -t command_in)  ||  echo "Could not create temporary file"
+CURR_DIR=$(pwd)
+OUT_DIR="$CURR_DIR/.idea"
+
+if [ -d $OUT_DIR ]; then
+  OUT_FILE="$OUT_DIR/Custom_$CLI_TOOL.xml"
+else
+  echo "$OUT_DIR folder does not seem to exists"
+fi
+
+$COMMAND list --format=xml > $TMP_IN 
+xsltproc --stringparam command $COMMAND --stringparam alias $CLI_TOOL $DIR/symfony-cli-to-phpstorm.xsl $TMP_IN > $OUT_FILE
+rm $TMP_IN

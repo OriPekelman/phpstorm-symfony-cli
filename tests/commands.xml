@@ -1,0 +1,1837 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<symfony name="Platform.sh CLI" version="1.7.2">
+  <commands>
+    <command id="docs" name="docs">
+      <usage>docs [--browser[="..."]] [--pipe] [search1] ... [searchN]</usage>
+      <description>Open the Platform.sh online documentation</description>
+      <help></help>
+      <aliases/>
+      <arguments>
+        <argument name="search" is_required="0" is_array="1">
+          <description>Search term(s)</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--browser" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The browser to use to open the URL. Set 0 for none.</description>
+          <defaults/>
+        </option>
+        <option name="--pipe" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Output the raw URL, suitable for piping to another command.</description>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="help" name="help">
+      <usage>help [--xml] [--format="..."] [--raw] [command_name]</usage>
+      <description>Displays help for a command</description>
+      <help>The &lt;info&gt;help&lt;/info&gt; command displays help for a given command:
+ 
+   &lt;info&gt;php /Users/oripekelman/Sites/platformsh-cli-upstream/platform help list&lt;/info&gt;
+ 
+ You can also output the help in other formats by using the &lt;comment&gt;--format&lt;/comment&gt; option:
+ 
+   &lt;info&gt;php /Users/oripekelman/Sites/platformsh-cli-upstream/platform help --format=xml list&lt;/info&gt;
+ 
+ To display the list of available commands, please use the &lt;info&gt;list&lt;/info&gt; command.</help>
+      <aliases/>
+      <arguments>
+        <argument name="command_name" is_required="0" is_array="0">
+          <description>The command name</description>
+          <defaults>
+            <default>help</default>
+          </defaults>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--xml" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>To output help as XML</description>
+        </option>
+        <option name="--format" shortcut="" accept_value="1" is_value_required="1" is_multiple="0">
+          <description>To output help in other formats</description>
+          <defaults>
+            <default>txt</default>
+          </defaults>
+        </option>
+        <option name="--raw" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>To output raw command help</description>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="list" name="list">
+      <usage>list [--xml] [--raw] [--format="..."] [namespace]</usage>
+      <description>Lists commands</description>
+      <help>The &lt;info&gt;list&lt;/info&gt; command lists all commands:
+ 
+   &lt;info&gt;php /Users/oripekelman/Sites/platformsh-cli-upstream/platform list&lt;/info&gt;
+ 
+ You can also display the commands for a specific namespace:
+ 
+   &lt;info&gt;php /Users/oripekelman/Sites/platformsh-cli-upstream/platform list test&lt;/info&gt;
+ 
+ You can also output the information in other formats by using the &lt;comment&gt;--format&lt;/comment&gt; option:
+ 
+   &lt;info&gt;php /Users/oripekelman/Sites/platformsh-cli-upstream/platform list --format=xml&lt;/info&gt;
+ 
+ It's also possible to get raw list of commands (useful for embedding command runner):
+ 
+   &lt;info&gt;php /Users/oripekelman/Sites/platformsh-cli-upstream/platform list --raw&lt;/info&gt;</help>
+      <aliases/>
+      <arguments>
+        <argument name="namespace" is_required="0" is_array="0">
+          <description>The namespace name</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--xml" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>To output list as XML</description>
+        </option>
+        <option name="--raw" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>To output raw command list</description>
+        </option>
+        <option name="--format" shortcut="" accept_value="1" is_value_required="1" is_multiple="0">
+          <description>To output list in other formats</description>
+          <defaults>
+            <default>txt</default>
+          </defaults>
+        </option>
+      </options>
+    </command>
+    <command id="login" name="login">
+      <usage>login</usage>
+      <description>Log in to Platform.sh</description>
+      <help></help>
+      <aliases/>
+      <arguments/>
+      <options>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="logout" name="logout">
+      <usage>logout</usage>
+      <description>Log out of Platform.sh</description>
+      <help></help>
+      <aliases/>
+      <arguments/>
+      <options>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="web" name="web">
+      <usage>web [--browser[="..."]] [--pipe] [--project[="..."]] [--environment[="..."]]</usage>
+      <description>Open the Platform.sh Web UI</description>
+      <help></help>
+      <aliases/>
+      <arguments/>
+      <options>
+        <option name="--browser" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The browser to use to open the URL. Set 0 for none.</description>
+          <defaults/>
+        </option>
+        <option name="--pipe" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Output the raw URL, suitable for piping to another command.</description>
+        </option>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--environment" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The environment ID</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="domain:add" name="domain:add">
+      <usage>domain:add [--project[="..."]] [--cert="..."] [--key="..."] [--chain="..."] [name]</usage>
+      <description>Add a new domain to the project</description>
+      <help></help>
+      <aliases/>
+      <arguments>
+        <argument name="name" is_required="0" is_array="0">
+          <description>The name of the domain</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--cert" shortcut="" accept_value="1" is_value_required="1" is_multiple="0">
+          <description>The path to the certificate file for this domain.</description>
+          <defaults/>
+        </option>
+        <option name="--key" shortcut="" accept_value="1" is_value_required="1" is_multiple="0">
+          <description>The path to the private key file for the provided certificate.</description>
+          <defaults/>
+        </option>
+        <option name="--chain" shortcut="" accept_value="1" is_value_required="1" is_multiple="1">
+          <description>The path to the certificate chain file or files for the provided certificate.</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="domain:delete" name="domain:delete">
+      <usage>domain:delete [--project[="..."]] [name]</usage>
+      <description>Delete a domain from the project</description>
+      <help></help>
+      <aliases/>
+      <arguments>
+        <argument name="name" is_required="0" is_array="0">
+          <description>The name of the domain</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="domain:list" name="domain:list">
+      <usage>domain:list [--project[="..."]]</usage>
+      <description>Get a list of all domains</description>
+      <help></help>
+      <aliases>
+        <alias>domains</alias>
+      </aliases>
+      <arguments/>
+      <options>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="environment:activate" name="environment:activate">
+      <usage>environment:activate [--project[="..."]] [--environment[="..."]] [environment1] ... [environmentN]</usage>
+      <description>Activate an environment</description>
+      <help></help>
+      <aliases/>
+      <arguments>
+        <argument name="environment" is_required="0" is_array="1">
+          <description>The environment(s) to activate</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--environment" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The environment ID</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="environment:backup" name="environment:backup">
+      <usage>environment:backup [--project[="..."]] [--environment[="..."]] [environment]</usage>
+      <description>Make a backup of an environment</description>
+      <help></help>
+      <aliases/>
+      <arguments>
+        <argument name="environment" is_required="0" is_array="0">
+          <description>The environment to back up</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--environment" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The environment ID</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="environment:branch" name="environment:branch">
+      <usage>environment:branch [--force] [--build] [--project[="..."]] [--environment[="..."]] [name] [parent]</usage>
+      <description>Branch an environment</description>
+      <help></help>
+      <aliases>
+        <alias>branch</alias>
+      </aliases>
+      <arguments>
+        <argument name="name" is_required="0" is_array="0">
+          <description>The name of the new environment. For example: "Sprint 2"</description>
+          <defaults/>
+        </argument>
+        <argument name="parent" is_required="0" is_array="0">
+          <description>The parent of the new environment</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--force" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Create the new environment even if the branch cannot be checked out locally</description>
+        </option>
+        <option name="--build" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Build the new environment locally</description>
+        </option>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--environment" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The environment ID</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="environment:checkout" name="environment:checkout">
+      <usage>environment:checkout [id]</usage>
+      <description>Check out an environment</description>
+      <help></help>
+      <aliases>
+        <alias>checkout</alias>
+      </aliases>
+      <arguments>
+        <argument name="id" is_required="0" is_array="0">
+          <description>The ID of the environment to check out. For example: "sprint2"</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="environment:deactivate" name="environment:deactivate">
+      <usage>environment:deactivate [--merged] [--project[="..."]] [--environment[="..."]] [environment1] ... [environmentN]</usage>
+      <description>Deactivate an environment</description>
+      <help></help>
+      <aliases/>
+      <arguments>
+        <argument name="environment" is_required="0" is_array="1">
+          <description>The environment(s) to deactivate</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--merged" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Deactivate all merged environments</description>
+        </option>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--environment" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The environment ID</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="environment:delete" name="environment:delete">
+      <usage>environment:delete [--inactive] [--project[="..."]] [--environment[="..."]] [environment1] ... [environmentN]</usage>
+      <description>Delete an environment</description>
+      <help></help>
+      <aliases/>
+      <arguments>
+        <argument name="environment" is_required="0" is_array="1">
+          <description>The environment(s) to delete</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--inactive" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Delete all inactive environments</description>
+        </option>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--environment" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The environment ID</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="environment:drush" name="environment:drush">
+      <usage>environment:drush [--project[="..."]] [--environment[="..."]] [cmd]</usage>
+      <description>Run a drush command on the remote environment</description>
+      <help></help>
+      <aliases>
+        <alias>drush</alias>
+      </aliases>
+      <arguments>
+        <argument name="cmd" is_required="0" is_array="0">
+          <description>A command and arguments to pass to Drush</description>
+          <defaults>
+            <default>status</default>
+          </defaults>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--environment" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The environment ID</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="environment:http-access" name="environment:http-access">
+      <usage>environment:http-access [--access="..."] [--auth="..."] [--project[="..."]] [--environment[="..."]]</usage>
+      <description>Update HTTP access settings for an environment</description>
+      <help></help>
+      <aliases>
+        <alias>httpaccess</alias>
+      </aliases>
+      <arguments/>
+      <options>
+        <option name="--access" shortcut="" accept_value="1" is_value_required="1" is_multiple="1">
+          <description>Access restriction in the format "permission:address"</description>
+          <defaults/>
+        </option>
+        <option name="--auth" shortcut="" accept_value="1" is_value_required="1" is_multiple="1">
+          <description>Authentication details in the format "username:password"</description>
+          <defaults/>
+        </option>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--environment" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The environment ID</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="environment:list" name="environment:list">
+      <usage>environment:list [--pipe] [--show[="..."]] [--refresh[="..."]] [--project[="..."]]</usage>
+      <description>Get a list of all environments</description>
+      <help></help>
+      <aliases>
+        <alias>environments</alias>
+      </aliases>
+      <arguments/>
+      <options>
+        <option name="--pipe" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Output a simple list of environment IDs.</description>
+        </option>
+        <option name="--show" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>Specify information to show about the environment: 'name', 'status', 'url', or 'all'.</description>
+          <defaults>
+            <default>name,status</default>
+          </defaults>
+        </option>
+        <option name="--refresh" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>Whether to refresh the list.</description>
+          <defaults>
+            <default>1</default>
+          </defaults>
+        </option>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="environment:merge" name="environment:merge">
+      <usage>environment:merge [--project[="..."]] [--environment[="..."]] [environment]</usage>
+      <description>Merge an environment</description>
+      <help></help>
+      <aliases>
+        <alias>merge</alias>
+      </aliases>
+      <arguments>
+        <argument name="environment" is_required="0" is_array="0">
+          <description>The environment to merge</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--environment" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The environment ID</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="environment:relationships" name="environment:relationships">
+      <usage>environment:relationships [--project[="..."]] [--environment[="..."]] [environment]</usage>
+      <description>List an environment's relationships</description>
+      <help></help>
+      <aliases/>
+      <arguments>
+        <argument name="environment" is_required="0" is_array="0">
+          <description>The environment</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--environment" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The environment ID</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="environment:ssh" name="environment:ssh">
+      <usage>environment:ssh [--pipe] [--project[="..."]] [--environment[="..."]] [cmd]</usage>
+      <description>SSH to the current environment</description>
+      <help></help>
+      <aliases>
+        <alias>ssh</alias>
+      </aliases>
+      <arguments>
+        <argument name="cmd" is_required="0" is_array="0">
+          <description>A command to run on the environment.</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--pipe" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Output the SSH URL only.</description>
+        </option>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--environment" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The environment ID</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="environment:synchronize" name="environment:synchronize">
+      <usage>environment:synchronize [--project[="..."]] [--environment[="..."]] [synchronize1] ... [synchronizeN]</usage>
+      <description>Synchronize an environment</description>
+      <help></help>
+      <aliases>
+        <alias>sync</alias>
+      </aliases>
+      <arguments>
+        <argument name="synchronize" is_required="0" is_array="1">
+          <description>What to synchronize: code, data or both</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--environment" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The environment ID</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="environment:url" name="environment:url">
+      <usage>environment:url [--browser[="..."]] [--pipe] [--project[="..."]] [--environment[="..."]] [path]</usage>
+      <description>Get the public URL of an environment</description>
+      <help></help>
+      <aliases>
+        <alias>url</alias>
+      </aliases>
+      <arguments>
+        <argument name="path" is_required="0" is_array="0">
+          <description>A path to append to the URL.</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--browser" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The browser to use to open the URL. Set 0 for none.</description>
+          <defaults/>
+        </option>
+        <option name="--pipe" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Output the raw URL, suitable for piping to another command.</description>
+        </option>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--environment" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The environment ID</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="integration:add" name="integration:add">
+      <usage>integration:add [--type="..."] [--token="..."] [--repository="..."] [--build-pull-requests[="..."]] [--fetch-branches[="..."]] [--room="..."] [--events[="..."]] [--states[="..."]] [--project[="..."]]</usage>
+      <description>Add an integration to the project</description>
+      <help></help>
+      <aliases/>
+      <arguments/>
+      <options>
+        <option name="--type" shortcut="" accept_value="1" is_value_required="1" is_multiple="0">
+          <description>The integration type (HipChat or GitHub)</description>
+          <defaults/>
+        </option>
+        <option name="--token" shortcut="" accept_value="1" is_value_required="1" is_multiple="0">
+          <description>An OAuth token for the integration</description>
+          <defaults/>
+        </option>
+        <option name="--repository" shortcut="" accept_value="1" is_value_required="1" is_multiple="0">
+          <description>GitHub: the repository to track</description>
+          <defaults/>
+        </option>
+        <option name="--build-pull-requests" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>GitHub: track pull requests</description>
+          <defaults/>
+        </option>
+        <option name="--fetch-branches" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>GitHub: track branches</description>
+          <defaults/>
+        </option>
+        <option name="--room" shortcut="" accept_value="1" is_value_required="1" is_multiple="0">
+          <description>HipChat: the room ID</description>
+          <defaults/>
+        </option>
+        <option name="--events" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>HipChat: events to report</description>
+          <defaults/>
+        </option>
+        <option name="--states" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>HipChat: states to report, e.g. complete,in_progress</description>
+          <defaults/>
+        </option>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="integration:delete" name="integration:delete">
+      <usage>integration:delete [--project[="..."]] id</usage>
+      <description>Delete an integration from a project</description>
+      <help></help>
+      <aliases/>
+      <arguments>
+        <argument name="id" is_required="1" is_array="0">
+          <description>The integration ID</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="integration:get" name="integration:get">
+      <usage>integration:get [--project[="..."]] [id]</usage>
+      <description>View project integration(s)</description>
+      <help></help>
+      <aliases>
+        <alias>integrations</alias>
+      </aliases>
+      <arguments>
+        <argument name="id" is_required="0" is_array="0">
+          <description>An integration ID. Leave blank to list integrations</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="integration:update" name="integration:update">
+      <usage>integration:update [--type="..."] [--token="..."] [--repository="..."] [--build-pull-requests[="..."]] [--fetch-branches[="..."]] [--room="..."] [--events[="..."]] [--states[="..."]] [--project[="..."]] id</usage>
+      <description>Update an integration</description>
+      <help></help>
+      <aliases/>
+      <arguments>
+        <argument name="id" is_required="1" is_array="0">
+          <description>The ID of the integration to update</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--type" shortcut="" accept_value="1" is_value_required="1" is_multiple="0">
+          <description>The integration type (HipChat or GitHub)</description>
+          <defaults/>
+        </option>
+        <option name="--token" shortcut="" accept_value="1" is_value_required="1" is_multiple="0">
+          <description>An OAuth token for the integration</description>
+          <defaults/>
+        </option>
+        <option name="--repository" shortcut="" accept_value="1" is_value_required="1" is_multiple="0">
+          <description>GitHub: the repository to track</description>
+          <defaults/>
+        </option>
+        <option name="--build-pull-requests" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>GitHub: track pull requests</description>
+          <defaults/>
+        </option>
+        <option name="--fetch-branches" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>GitHub: track branches</description>
+          <defaults/>
+        </option>
+        <option name="--room" shortcut="" accept_value="1" is_value_required="1" is_multiple="0">
+          <description>HipChat: the room ID</description>
+          <defaults/>
+        </option>
+        <option name="--events" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>HipChat: events to report</description>
+          <defaults/>
+        </option>
+        <option name="--states" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>HipChat: states to report, e.g. complete,in_progress</description>
+          <defaults/>
+        </option>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="project:build" name="project:build">
+      <usage>project:build [-a|--abslinks] [--no-clean] [--no-archive] [--working-copy] [--concurrency[="..."]] [--no-cache]</usage>
+      <description>Build the current project locally</description>
+      <help></help>
+      <aliases>
+        <alias>build</alias>
+      </aliases>
+      <arguments/>
+      <options>
+        <option name="--abslinks" shortcut="-a" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Use absolute links</description>
+        </option>
+        <option name="--no-clean" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not remove old builds</description>
+        </option>
+        <option name="--no-archive" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not create or use a build archive</description>
+        </option>
+        <option name="--working-copy" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Drush: use git to clone a repository of each Drupal module rather than simply downloading a version.</description>
+        </option>
+        <option name="--concurrency" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>Drush: set the number of concurrent projects that will be processed at the same time.</description>
+          <defaults>
+            <default>3</default>
+          </defaults>
+        </option>
+        <option name="--no-cache" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Drush: disable pm-download caching.</description>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="project:clean" name="project:clean">
+      <usage>project:clean [--keep[="..."]] [--ttl[="..."]] [--include-active]</usage>
+      <description>Remove old project builds</description>
+      <help></help>
+      <aliases>
+        <alias>clean</alias>
+      </aliases>
+      <arguments/>
+      <options>
+        <option name="--keep" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The maximum number of builds to keep</description>
+          <defaults>
+            <default>5</default>
+          </defaults>
+        </option>
+        <option name="--ttl" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The maximum age of builds, in seconds</description>
+          <defaults>
+            <default>86400</default>
+          </defaults>
+        </option>
+        <option name="--include-active" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Delete active build(s) too</description>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="project:drush-aliases" name="project:drush-aliases">
+      <usage>project:drush-aliases [-r|--recreate] [-g|--group[="..."]] [-p|--pipe]</usage>
+      <description>Find the project's Drush aliases</description>
+      <help></help>
+      <aliases>
+        <alias>drush-aliases</alias>
+      </aliases>
+      <arguments/>
+      <options>
+        <option name="--recreate" shortcut="-r" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Recreate the aliases.</description>
+        </option>
+        <option name="--group" shortcut="-g" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>Recreate the aliases with a new group name.</description>
+          <defaults/>
+        </option>
+        <option name="--pipe" shortcut="-p" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Output the current group name (do nothing else).</description>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="project:get" name="project:get">
+      <usage>project:get [--environment[="..."]] [--no-build] [--include-inactive] [id] [directory-name]</usage>
+      <description>Clone and build a project locally</description>
+      <help></help>
+      <aliases>
+        <alias>get</alias>
+      </aliases>
+      <arguments>
+        <argument name="id" is_required="0" is_array="0">
+          <description>The project ID</description>
+          <defaults/>
+        </argument>
+        <argument name="directory-name" is_required="0" is_array="0">
+          <description>The directory name. Defaults to the project ID</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--environment" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The environment ID to clone. Defaults to 'master'</description>
+          <defaults/>
+        </option>
+        <option name="--no-build" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not build the retrieved project</description>
+        </option>
+        <option name="--include-inactive" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>List inactive environments too</description>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="project:init" name="project:init">
+      <usage>project:init [directory]</usage>
+      <description>Initialize from a plain Git repository</description>
+      <help></help>
+      <aliases>
+        <alias>init</alias>
+      </aliases>
+      <arguments>
+        <argument name="directory" is_required="0" is_array="0">
+          <description>The path to the repository.</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="project:list" name="project:list">
+      <usage>project:list [--pipe] [--refresh[="..."]]</usage>
+      <description>Get a list of all active projects</description>
+      <help></help>
+      <aliases>
+        <alias>projects</alias>
+      </aliases>
+      <arguments/>
+      <options>
+        <option name="--pipe" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Output a simple list of project IDs.</description>
+        </option>
+        <option name="--refresh" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>Whether to refresh the list.</description>
+          <defaults>
+            <default>1</default>
+          </defaults>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="ssh-key:add" name="ssh-key:add">
+      <usage>ssh-key:add [path]</usage>
+      <description>Add a new SSH key</description>
+      <help></help>
+      <aliases/>
+      <arguments>
+        <argument name="path" is_required="0" is_array="0">
+          <description>The path to the ssh key</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="ssh-key:delete" name="ssh-key:delete">
+      <usage>ssh-key:delete [id]</usage>
+      <description>Delete an SSH key</description>
+      <help></help>
+      <aliases/>
+      <arguments>
+        <argument name="id" is_required="0" is_array="0">
+          <description>The ID of the SSH key to delete</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="ssh-key:list" name="ssh-key:list">
+      <usage>ssh-key:list</usage>
+      <description>Get a list of all added SSH keys</description>
+      <help></help>
+      <aliases>
+        <alias>ssh-keys</alias>
+      </aliases>
+      <arguments/>
+      <options>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="variable:delete" name="variable:delete">
+      <usage>variable:delete [--project[="..."]] [--environment[="..."]] name</usage>
+      <description>Delete a variable from an environment</description>
+      <help></help>
+      <aliases/>
+      <arguments>
+        <argument name="name" is_required="1" is_array="0">
+          <description>The variable name</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--environment" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The environment ID</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="variable:get" name="variable:get">
+      <usage>variable:get [--pipe] [--ssh] [--project[="..."]] [--environment[="..."]] [name]</usage>
+      <description>Get a variable for an environment</description>
+      <help></help>
+      <aliases>
+        <alias>variables</alias>
+        <alias>vget</alias>
+      </aliases>
+      <arguments>
+        <argument name="name" is_required="0" is_array="0">
+          <description>The name of the variable</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--pipe" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Output the full variable value only</description>
+        </option>
+        <option name="--ssh" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Use SSH to get the currently active variables</description>
+        </option>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--environment" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The environment ID</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+    <command id="variable:set" name="variable:set">
+      <usage>variable:set [--json] [--project[="..."]] [--environment[="..."]] name value</usage>
+      <description>Set a variable for an environment</description>
+      <help></help>
+      <aliases>
+        <alias>vset</alias>
+      </aliases>
+      <arguments>
+        <argument name="name" is_required="1" is_array="0">
+          <description>The variable name</description>
+          <defaults/>
+        </argument>
+        <argument name="value" is_required="1" is_array="0">
+          <description>The variable value</description>
+          <defaults/>
+        </argument>
+      </arguments>
+      <options>
+        <option name="--json" shortcut="" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Mark the value as JSON</description>
+        </option>
+        <option name="--project" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The project ID</description>
+          <defaults/>
+        </option>
+        <option name="--environment" shortcut="" accept_value="1" is_value_required="0" is_multiple="0">
+          <description>The environment ID</description>
+          <defaults/>
+        </option>
+        <option name="--help" shortcut="-h" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this help message</description>
+        </option>
+        <option name="--quiet" shortcut="-q" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Do not output any message</description>
+        </option>
+        <option name="--verbose" shortcut="-v" shortcuts="-v|-vv|-vvv" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Increase the verbosity of messages</description>
+        </option>
+        <option name="--version" shortcut="-V" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Display this application version</description>
+        </option>
+        <option name="--yes" shortcut="-y" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "yes" to all prompts</description>
+        </option>
+        <option name="--no" shortcut="-n" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Answer "no" to all prompts</description>
+        </option>
+        <option name="--shell" shortcut="-s" accept_value="0" is_value_required="0" is_multiple="0">
+          <description>Launch the shell</description>
+        </option>
+      </options>
+    </command>
+  </commands>
+  <namespaces>
+    <namespace id="_global">
+      <command>branch</command>
+      <command>build</command>
+      <command>checkout</command>
+      <command>clean</command>
+      <command>docs</command>
+      <command>domains</command>
+      <command>drush</command>
+      <command>drush-aliases</command>
+      <command>environments</command>
+      <command>get</command>
+      <command>help</command>
+      <command>httpaccess</command>
+      <command>init</command>
+      <command>integrations</command>
+      <command>list</command>
+      <command>login</command>
+      <command>logout</command>
+      <command>merge</command>
+      <command>projects</command>
+      <command>ssh</command>
+      <command>ssh-keys</command>
+      <command>sync</command>
+      <command>url</command>
+      <command>variables</command>
+      <command>vget</command>
+      <command>vset</command>
+      <command>web</command>
+    </namespace>
+    <namespace id="domain">
+      <command>domain:add</command>
+      <command>domain:delete</command>
+      <command>domain:list</command>
+    </namespace>
+    <namespace id="environment">
+      <command>environment:activate</command>
+      <command>environment:backup</command>
+      <command>environment:branch</command>
+      <command>environment:checkout</command>
+      <command>environment:deactivate</command>
+      <command>environment:delete</command>
+      <command>environment:drush</command>
+      <command>environment:http-access</command>
+      <command>environment:list</command>
+      <command>environment:merge</command>
+      <command>environment:relationships</command>
+      <command>environment:ssh</command>
+      <command>environment:synchronize</command>
+      <command>environment:url</command>
+    </namespace>
+    <namespace id="integration">
+      <command>integration:add</command>
+      <command>integration:delete</command>
+      <command>integration:get</command>
+      <command>integration:update</command>
+    </namespace>
+    <namespace id="project">
+      <command>project:build</command>
+      <command>project:clean</command>
+      <command>project:drush-aliases</command>
+      <command>project:get</command>
+      <command>project:init</command>
+      <command>project:list</command>
+    </namespace>
+    <namespace id="ssh-key">
+      <command>ssh-key:add</command>
+      <command>ssh-key:delete</command>
+      <command>ssh-key:list</command>
+    </namespace>
+    <namespace id="variable">
+      <command>variable:delete</command>
+      <command>variable:get</command>
+      <command>variable:set</command>
+    </namespace>
+  </namespaces>
+</symfony>
